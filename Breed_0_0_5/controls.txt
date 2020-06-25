@@ -1,0 +1,17 @@
+In start menu:
+	Play               : p or P
+	Quit               : q or Q
+	Toggle music/sound : < or >
+
+In game:
+	Move               : mouse cursor
+	Eat                : right click
+	Quit               : q or Q
+	Take screenshot    : = or +
+	Toggle music/sound : < or >
+
+In end menu :
+	Replay             : r or R
+	Quit               : q or Q
+	Toggle music/sound : < or >
+

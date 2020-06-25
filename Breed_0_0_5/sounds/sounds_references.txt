@@ -1,0 +1,9 @@
+Musics :
+	Menu : Hicham Chahidi - Attente
+	Game : 0 | Hicham Chahidi - Plongee Nocturne
+		   1 | Hicham Chahidi - Pass
+		   2 | Hicham Chahidi - Tigra
+		   3 | Hicham Chahidi - Amour des Bush pour la guerre
+
+Sounds :
+	All : I.A.

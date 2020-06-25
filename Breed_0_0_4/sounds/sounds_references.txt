@@ -1,6 +1,0 @@
-Musics :
-	Menu : #NAME#
-	Game : 0 | #NAME#
-
-Sounds :
-	All : I.A.
