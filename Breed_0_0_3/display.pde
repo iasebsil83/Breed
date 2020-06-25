@@ -4,10 +4,6 @@ float coo_coef = 0.015625;
 
 
 
-// ---------------- Functions ----------------
-
-
-
 //---------------- Execution ----------------
 void display(){
     switch(menu){
@@ -31,9 +27,9 @@ void display(){
                 image(img_background,0,0);
                 
                 //sea bed
-                fill(ground_color);
+                fill(gnd_color);
                 for(int x=0; x < width; x++)
-                    rect(x,height,1,-ground_height[ground_deltaX+x]);
+                    rect(x,height,1,-gnd_buffer[gnd_deltaX+x]);
                 
                 //turtles
                 mother.show();
@@ -47,10 +43,12 @@ void display(){
                     image(img_sound[0],width-40,height-40);
                 
                 //coordinates
+                /*
                 println(
-                    "X:" + (ground_deltaX+mother.x)*coo_coef +
+                    "X:" + (gnd_deltaX+mother.x)*coo_coef +
                     ", Y:" + mother.y*coo_coef
                 );
+                */
             }
         break;
     }

@@ -44,13 +44,6 @@ void keyPressed(){
                     soundCheck();
                     delay(100);
                 break;
-                case 'g': //get saved scene
-                    loadGame();
-                    delay(100);
-                break;
-                case 't': //save scene
-                    saveGame();
-                break;
             }
         break;
     }

@@ -1,4 +1,4 @@
-/* ================== Breed [0.0.2] =================
+/* ================== Breed [0.0.3] =================
     Breed is a 2D game.
     
     Thanks for downloading ! Now, enjoy !
@@ -22,10 +22,15 @@
     
     21/02/2020 > [0.0.2] :
         - World's generation until fixed limit
+        
+    03/03/2020 > [0.0.3] :
+        - World's infinite generation
     
-    TO DO : - World's infinite generation
+    TO DO : - Spawn enemies
+            - Make turtles grow
     
     BUGS : - Terrain is black instead of brown-orange
+           - Terrain generation is brutal between lands
 
    ================================================== */
 
@@ -33,10 +38,6 @@
 
 // ---------------- Importations ----------------
 import ddf.minim.*;
-
-
-
-// ---------------- Functions ----------------
 
 
 

@@ -1,5 +1,6 @@
 // ---------------- Initialisation ----------------
 final int mother_terrain_max = 7*WIDTH/8;
+final int mother_terrain_min = WIDTH/8;
 
 
 
@@ -8,12 +9,30 @@ void timedEvents(){
     
     //terrain scroll
     if(mother.x > mother_terrain_max){
-        ground_deltaX += 4;
-        if(ground_deltaX+width-1 > ground_max_generated){
-            generateNext();
-            generateNext();
-            generateNext();
-            generateNext();
+        gnd_deltaX += 16;
+        if(gnd_deltaX+width > gnd_buffer_len){
+            println("getting next half buffer...");
+            saveHalfBuffer(0);
+            gnd_prevLand++;
+            gnd_nextLand++;
+            gnd_deltaX -= gnd_buffer_len_2;
+            leftShiftBuffer();
+            println("    <Info : " + gnd_prevLand + " , " + gnd_nextLand + " >");
+            getHalfBuffer(gnd_buffer_len_2);
+            println("...done");
+        }
+    }else if(mother.x < mother_terrain_min){
+        gnd_deltaX -= 16;
+        if(gnd_deltaX < 0){
+            println("getting prev half buffer...");
+            saveHalfBuffer(gnd_buffer_len_2);
+            gnd_prevLand--;
+            gnd_nextLand--;
+            gnd_deltaX += gnd_buffer_len_2;
+            rightShiftBuffer();
+            println("    <Info : " + gnd_prevLand + " , " + gnd_nextLand + " >");
+            getHalfBuffer(0);
+            println("...done");
         }
     }
     
