@@ -1,0 +1,15 @@
+Move up    : Z or z
+     down  : Q or q
+     right : D or d
+     left   : Q or q
+
+Come back to main menu : M or m
+
+Toggle sound in game : < or >
+
+Take screenshot : + or =
+
+Save scene : t
+
+Load saved scene : r
+
