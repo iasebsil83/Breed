@@ -1,7 +1,25 @@
+// ---------------- Initialisation ----------------
+final int mother_terrain_max = 7*WIDTH/8;
+
+
+
+// ---------------- Execution -----------------
 void timedEvents(){
-    //mother turtle
-    mother.update();
     
+    //terrain scroll
+    if(mother.x > mother_terrain_max){
+        ground_deltaX += 4;
+        if(ground_deltaX+width-1 > ground_max_generated){
+            generateNext();
+            generateNext();
+            generateNext();
+            generateNext();
+        }
+    }
+    
+    //mother turtle
+    mother.tryMove(mouseX,mouseY);
+    mother.update();
     
     //children turtles
     for(byte c=0; c < CHILDREN_LENGTH; c++){

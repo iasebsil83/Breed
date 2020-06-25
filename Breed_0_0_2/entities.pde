@@ -56,7 +56,7 @@ class turtle{
         //check on whole interval
         boolean ok = true;
         for(int x=minX; x < maxX; x++){
-            if(maxY > height-ground_height[x])
+            if(maxY > height-ground_height[ground_deltaX+x])
                 ok = false;
         }
         if(!ok)

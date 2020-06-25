@@ -58,7 +58,6 @@ void mouseMoved(){
         case GAME:
         
             //mother follows mouse
-            mother.tryMove(mouseX,mouseY);
             mother.vectorX = mouse_vectorX;
             mother.vectorY = mouse_vectorY;
             if(mouse_vectorX == 0 && mouse_vectorY == 0)
