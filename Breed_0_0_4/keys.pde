@@ -2,7 +2,7 @@
 
 
 
-// ---------------- Execution ----------------
+// ---------------- Execution ---------------- //WARNING : working correctly on AZERTY keyboard only !
 void keyPressed(){
     switch(menu){
         case START:
@@ -14,8 +14,13 @@ void keyPressed(){
                     soundCheck();
                     delay(1000);
                 break;
-                case 's':
-                case 'S':
+                case 'q':
+                case 'Q':
+                    exit();
+                break;
+                case '<':
+                case '>':
+                    //toggle sound
                     snd_on = !snd_on;
                     soundCheck();
                     delay(100);
@@ -23,13 +28,20 @@ void keyPressed(){
             }
         break;
         case GAME:
-            switch(key){ //WARNING : working on AZERTY keyboard only !
-                case '<': //toggle sound
+            switch(key){
+                case '<':
+                case '>':
+                    //toggle sound
                     snd_on = !snd_on;
                     soundCheck();
                     delay(400);
                 break;
-                case '=': //take screenshot
+                case 'q':
+                case 'Q':
+                    exit();
+                break;
+                case '=':
+                case '+':
                     //screenshot sound
                     snd_scrshot.rewind();
                     snd_scrshot.play();
@@ -39,10 +51,26 @@ void keyPressed(){
                     screenshotNbr++;
                     display_screenshotCnt = 15;
                 break;
-                case 'm': //go bac to start_menu
-                    menu = menu_names.START;
+            }
+        break;
+        case END:
+            switch(key){
+                case '<':
+                case '>':
+                    //toggle sound
+                    snd_on = !snd_on;
                     soundCheck();
-                    delay(100);
+                    delay(400);
+                break;
+                case 'r':
+                case 'R':
+                    //reset game
+                    initTurtles();
+                    menu = menu_names.GAME;
+                break;
+                case 'q':
+                case 'Q':
+                    exit();
                 break;
             }
         break;

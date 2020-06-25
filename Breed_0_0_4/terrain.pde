@@ -2,7 +2,6 @@
 final float gnd_diff_max = 1;
 final int gnd_buffer_len = 10*WIDTH;
 final int gnd_buffer_len_2 = gnd_buffer_len/2;
-final color gnd_color = color(230,210,200);
 short[] gnd_buffer;
 int gnd_deltaX = gnd_buffer_len_2;
 int gnd_prevLand = -1;
@@ -46,12 +45,8 @@ void initGround(){
     gnd_buffer = new short[gnd_buffer_len];
     
     //check land files
-    println("trying to get first land file...");
     getHalfBuffer(0);
-    println("...done");
-    println("trying to get second land file...");
     getHalfBuffer(gnd_buffer_len_2);
-    println("...done");
 }
 
 void leftShiftBuffer(){
@@ -67,7 +62,6 @@ void rightShiftBuffer(){
 void getHalfBuffer(int startIndex){
     
     //check for the corresponding land file
-    println("    getting land file data...");
     String[] text;
     if(startIndex == 0)
         text = loadStrings("lands/" + sizeIn4(gnd_prevLand));
@@ -96,18 +90,14 @@ void getHalfBuffer(int startIndex){
             for(int x=0; x < gnd_buffer_len_2; x++)
                 gnd_buffer[gnd_buffer_len_2+x] = (short)parseInt(splitedText[x]);
         }
-        println("    ...land file data found and loaded");
     }catch(Exception e){
         
         //can't find a correct land file
-        println("    ...cannot find land file data");
-        println("    generating and saving half buffer...");
         generateHalfBuffer(startIndex);
         if(startIndex == 0)
             saveHalfBuffer(0);
         else
             saveHalfBuffer(gnd_buffer_len_2);
-        println("    ...half buffer generated and saved");
     }
 }
 
@@ -198,5 +188,37 @@ void generateHalfBuffer(int startIndex){
             if( abs(gnd_buffer[x-n]-gnd_buffer[x]) > gnd_diff_max )
                 gnd_buffer[x] = (short)( (2*gnd_buffer[x-n] + gnd_buffer[x])/3 );
         }
+    }
+}
+
+void motherTerrainScroll(){
+    //going right
+    if(mother.x > mother_terrain_max){
+        gnd_deltaX += 16;
+        
+        //going too far to right for gnd_buffer
+        if(gnd_deltaX+width > gnd_buffer_len){
+            saveHalfBuffer(0);
+            gnd_prevLand++;
+            gnd_nextLand++;
+            gnd_deltaX -= gnd_buffer_len_2;
+            leftShiftBuffer();
+            getHalfBuffer(gnd_buffer_len_2);
+        }
+        
+    //going left
+    }else if(mother.x < mother_terrain_min){
+        gnd_deltaX -= 16;
+        
+        //going too far to left for gnd_buffer
+        if(gnd_deltaX < 0){
+            saveHalfBuffer(gnd_buffer_len_2);
+            gnd_prevLand--;
+            gnd_nextLand--;
+            gnd_deltaX += gnd_buffer_len_2;
+            rightShiftBuffer();
+            getHalfBuffer(0);
+        }
+        
     }
 }

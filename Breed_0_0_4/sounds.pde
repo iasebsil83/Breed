@@ -1,4 +1,6 @@
 // ---------------- Initialisation ----------------
+final int snd_musicCntMax = 2000;
+int snd_musicCnt = 0;
 Minim minim;
 AudioPlayer snd_menu;
 AudioPlayer[] snd_game = new AudioPlayer[4];
@@ -27,6 +29,7 @@ void soundCheck(){
     if(snd_on){
         switch(menu){
             case START:
+            case END:
                 if(!snd_menu.isPlaying()){
                     snd_menu.rewind();
                     snd_menu.loop();
